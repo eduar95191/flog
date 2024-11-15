@@ -1,0 +1,69 @@
+
+.login-container {
+    width: 640px; /* Ancho del contenedor */
+    height: 427px; /* Alto del contenedor */
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo con transparencia para simular nubes */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-image: url('../imagenes/inicio.jpg'); 
+    background-size: cover;
+    background-blur: 5px; /* Agrega un efecto de desenfoque al fondo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px; /* Aumenta el espacio interior */
+}
+.login-container h1 {
+    color: #fff; /* Texto del h1 en blanco */
+}
+.input-field {
+    margin: 15px 0; /* Espacio entre los campos */
+    color: #fff; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    padding: 12px; /* Espacio interior de los campos */
+    border: none; /* Sin bordes */
+    border-radius: 20px; /* Bordes redondos */
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo del campo con transparencia */
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
+}
+
+label {
+    display: block;
+    text-align: left;
+}
+
+.login-btn {
+    background-color: #54787d;
+    color: #fff;
+    border: none;
+    border-radius: 100px; /* Bordes redondos para el botón */
+    padding: 12px 75px; /* Tamaño del botón */
+    cursor: pointer;
+}
+.registro-btn{
+    background-color: #54787d;
+    color: #fff;
+    border: none;
+    margin: 5px;
+    border-radius: 100px; 
+    padding: 12px 75px; /* Tamaño del botón */
+    cursor: pointer;
+}
+.login-btn:hover {
+    background-color: #0056b3;   
+}
+.registro-btn:hover {
+    background-color: #0056b3;
+}

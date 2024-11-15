@@ -1,0 +1,188 @@
+/* Diseño general de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+        
+  }
+  
+  /* Contenedor principal */
+  .partida-container {
+    width: 80%;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título */
+  .titulo-partida {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Formulario */
+  .form-container-partida  {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+  }
+  
+  /* Contenedor de cada input */
+  .input-container-partida {
+    margin-bottom: 10px;
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .input-container-partida-row {
+    display: flex;
+    flex-direction: row; /* Los elementos en esta fila estarán uno al lado del otro */
+    gap: 10px; /* Espacio entre los elementos dentro de la fila */
+  }
+  
+  /* Etiquetas */
+  .label-partida {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  /* Estilo de los inputs */
+  .input-partida, select {
+    width: 90%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo de los select */
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+  }  
+  
+
+  /* Estilo para la lista de clubes */
+  .clubs-list {
+    padding-left: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Estilo para cada item de la lista */
+  .club-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px; 
+  }
+  
+  /* Estilo para el texto del club */
+  .club-name {
+    margin-left: 5px;
+  }
+  
+  /* Estilo para el checkbox */
+  .club-checkbox {
+  width: 25px; 
+  height: 25px; 
+  border: 2px solid #007bff; 
+  border-radius: 5px; 
+  background-color: #fff; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  /* Estilo para el input de Número de veces de los palos */
+  .quantity-input {
+    margin-left: 10px;
+    width: 120px; 
+    height: 50px; 
+    font-size: 16px; 
+    padding: 10px; 
+    border: 2px solid #3b9769; 
+    border-radius: 10px; 
+    background-color: #fff; 
+    transition: all 0.3s ease; 
+  }
+/* Estilo para el placeholder */
+.quantity-input::placeholder {
+    color: #4CAF50; 
+    font-style: italic; 
+    opacity: 0.7; 
+  }
+  
+  /* Cuando el input de cantidad está enfocado */
+  .quantity-input:focus {
+    outline: none; 
+    border-color: #15c179; 
+    background-color: #fffbf2; 
+    box-shadow: 0 0 15px rgba(15, 199, 85, 0.6); /* Sombra para resaltar el foco */
+  }
+  
+  /* Cuando el input se muestra (visibilidad) */
+  .quantity-input.show {
+    opacity: 1; 
+    transition: opacity 0.5s ease-in-out; 
+  }
+
+/* Cuando el checkbox está seleccionado */
+.club-checkbox:checked {
+    background-color: #1fd59b;
+    border-color: #15c179; 
+  }
+  
+  /* Estilo para el contorno cuando el checkbox tiene el foco (cuando es seleccionado o clickeado) */
+  .club-checkbox:focus {
+    outline: none; 
+    box-shadow: 0 0 0 3px rgba(81, 184, 136, 0.5); 
+  }
+  
+  /* Estilo para el checkbox marcado */
+  .club-checkbox:checked + .club-name {
+    font-weight: bold; 
+    color: #4CAF50; 
+  }
+
+  .guardar-btn {
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+  }
+  
+  .guardar-btn:hover {
+    background-color: #81c784; 
+    transform: scale(1.05);
+  }
+  
+  .guardar-btn:active {
+    background-color: #388e3c; 
+    transform: scale(0.98); 
+  }
+  
+  .guardar-btn:focus {
+    outline: none; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+  }
+  
