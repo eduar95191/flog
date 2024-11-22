@@ -100,10 +100,10 @@ def get_resumen():
 
     # Agrupar por 'ID_Jugador' y 'Tipo_clima' y obtener la información necesaria
     resumen_jugador = resumen_jugador.groupby(['ID_Jugador', 'Tipo_clima']).agg({
+        'ID_Juego': 'first',
         'Golpes_Total_Hoyo': 'sum',
         'Golpes_predichos': 'sum',
         'Par': 'sum',
-        'Par_predicho': 'sum',
         'Porcentaje_mejora_golpes': 'mean',
         'Porcentaje_mejora_par': 'mean',
         'Palo_recomendado': lambda x: x.mode()[0],

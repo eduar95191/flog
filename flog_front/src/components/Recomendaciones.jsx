@@ -65,11 +65,9 @@ export const Recomendaciones = () => {
 
   return (
     <div>
-      <h1>Recomendaciones dadas al jugador para mejorar</h1>
-
       {/* Formulario para ingresar los parámetros */}
       <div>
-        <label htmlFor="idJugador">ID del Jugador:</label>
+        <label htmlFor="idJugador">Ingrese el ID del Jugador, saldran resultados de jugadas y se le darán recomendaciones para mejorar en el juego de GOLF:</label>
         <input
           type="number"
           id="idJugador"
@@ -92,6 +90,8 @@ export const Recomendaciones = () => {
             <p><strong>Par del campo:</strong> {datos.generales[0].Par}</p>
           </div>
 
+          <p>A continuación, se presentan las partidas de golf junto con sus resultados, incluyendo información detallada como el número total de golpes de cada juego, promedio de golpes, palo más utilizado, porcentajes de mejora en golpes , así como el tipo de clima durante la partida:</p>
+
           {/* Tabla con datos generales */}
           <table
             border="1"
@@ -104,24 +104,22 @@ export const Recomendaciones = () => {
           >
             <thead>
               <tr>
-                <th>Golpes Totales en un juego</th>
-                <th>Golpes Esperados en un juego</th>
+                <th>Código de jugada</th>
+                <th>Golpes Totales </th>
+                <th>Golpes Promedios</th>
                 <th>Palo más usado</th>
-                <th>Par Predicho</th>
                 <th>Porcentaje de Mejora en Golpes</th>
-                <th>Porcentaje de Mejora en Par</th>
                 <th>Tipo de Clima</th>
               </tr>
             </thead>
             <tbody>
               {datos.generales.map((fila, index) => (
                 <tr key={index}>
+                  <td>{fila.ID_Juego}</td>
                   <td>{fila.Golpes_Total_Hoyo}</td>
                   <td>{parseFloat(fila.Golpes_predichos).toFixed(0)}</td>
-                  <td>{fila.Palo_mas_usado}</td>
-                  <td>{fila.Par_predicho}</td>
+                  <td>{fila.Palo_mas_usado}</td>  
                   <td>{fila.Porcentaje_mejora_golpes}</td>
-                  <td>{fila.Porcentaje_mejora_par}</td>
                   <td>{fila.Tipo_clima}</td>
                 </tr>
               ))}
@@ -154,8 +152,10 @@ export const Recomendaciones = () => {
               ))}
             </tbody>
           </table>
+          <h1>Recomendaciones dadas al jugador para mejorar</h1>
         </div>
       )}
     </div>
+      
   );
 };
