@@ -8,9 +8,7 @@ import warnings
 
 
 app = Flask(__name__)
-
 CORS(app)
-
 warnings.filterwarnings("ignore")
 
 
@@ -39,7 +37,7 @@ target_par = 'Resultado_Handicap'
 
 palo_columns = ['Driver','Hibrido', 'Madera3', 'Madera5', 'Hierro2', 'Hierro3',
                 'Hierro4', 'Hierro5', 'Hierro6', 'Hierro7', 'Hierro8',
-                'Hierro9', 'Pitching _Wedge', 'Sand Wedge','Putt']
+                'Hierro9', 'Pitching _Wedge', 'Sand Wedge']
 file_golf['Palo_recomendado'] = file_golf[palo_columns].idxmax(axis=1)
 
 
@@ -86,25 +84,21 @@ file_golf['Palo_predicho'] = file_golf['Palo_recomendado_codificado'].apply(lamb
 
 @app.route('/resumen_jugadores', methods=['GET'])
 def get_resumen():
-
     id_jugador = request.args.get('id_jugador', type=int)
-    tipo_clima = request.args.get('tipo_clima', type=str)
 
+    if not id_jugador:
+        return jsonify({"error": "Debe proporcionar los parámetros: 'id_jugador'."})
 
-    if not id_jugador or not tipo_clima:
-        return jsonify({"error": "Debe proporcionar los parámetros: 'id_jugador' y 'tipo_clima'."})
-
-
+    # Verificar si las columnas 'ID_Jugador' y 'Tipo_clima' existen en el DataFrame
     if 'ID_Jugador' in file_golf.columns and 'Tipo_clima' in file_golf.columns:
-        resumen_jugador = file_golf[(file_golf['ID_Jugador'] == id_jugador) &
-                                    (file_golf['Tipo_clima'] == tipo_clima)]
+        resumen_jugador = file_golf[file_golf['ID_Jugador'] == id_jugador]
     else:
-        return jsonify({"error": "Las columnas 'ID_Jugador' o 'Tipo_clima' no se encuentran en el DataFrame."})
+        return jsonify({"error": "Las columnas 'ID_Jugador' "})
 
     if resumen_jugador.empty:
         return jsonify({"error": "No se encontraron resultados con los parámetros proporcionados."})
 
-
+    # Agrupar por 'ID_Jugador' y 'Tipo_clima' y obtener la información necesaria
     resumen_jugador = resumen_jugador.groupby(['ID_Jugador', 'Tipo_clima']).agg({
         'Golpes_Total_Hoyo': 'sum',
         'Golpes_predichos': 'sum',
@@ -112,17 +106,21 @@ def get_resumen():
         'Par_predicho': 'sum',
         'Porcentaje_mejora_golpes': 'mean',
         'Porcentaje_mejora_par': 'mean',
-        'Palo_recomendado': lambda x: x.mode()[0]
+        'Palo_recomendado': lambda x: x.mode()[0],
+        'Edad': 'first',  # Edad se toma solo una vez por jugador
+        'Estatura': 'first',  # Estatura se toma solo una vez por jugador
+        'N_Hoyo': 'first',
+        'Resultado_Handicap': 'first',
     }).reset_index()
 
-
+    # Renombrar la columna 'Palo_recomendado' a 'Palo_mas_usado'
     resumen_jugador.rename(columns={'Palo_recomendado': 'Palo_mas_usado'}, inplace=True)
 
-
+    # Redondear los porcentajes de mejora a 2 decimales
     resumen_jugador['Porcentaje_mejora_golpes'] = resumen_jugador['Porcentaje_mejora_golpes'].round(2).astype(str)
     resumen_jugador['Porcentaje_mejora_par'] = resumen_jugador['Porcentaje_mejora_par'].round(2).astype(str)
 
-
+    # Convertir el resumen a formato JSON
     resumen_json = resumen_jugador.to_dict(orient='records')
     return jsonify(resumen_json)
 
