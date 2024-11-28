@@ -40,7 +40,7 @@ export const Header = () => {
 
     const headersData = [
       "Partida de GOLF",
-      "Recomendaciones",
+      "Modelo IA",
       "Ranking",
       "Cerrar sesión",
     ];
@@ -115,7 +115,7 @@ export const Header = () => {
       </div>
       <div className={classes.right}>
         <Link to="/Recomendaciones" className={classes.Requisito}>
-          <Typography>Recomendaciones</Typography>
+          <Typography>Modelo IA</Typography>
         </Link>
       </div>
       <div className={classes.right}>
