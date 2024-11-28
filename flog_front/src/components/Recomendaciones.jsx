@@ -176,7 +176,7 @@ export const Recomendaciones = () => {
 
           {/* Tabla con los golpes por hoyo */}
           <h3 style={{ textAlign: "center", marginTop: "30px" }}>
-            Historial de Mejor Jugada
+            Historial de Mejor Jugada por hoyo
           </h3>
           <table
             border="1"
@@ -215,32 +215,32 @@ export const Recomendaciones = () => {
           </table>
 
           <h1 style={{ textAlign: "center", marginTop: "40px" }}>
-  Recomendaciones dadas al jugador para mejorar
-</h1>
+          Recomendaciones dadas al jugador para mejorar
+          </h1>
 
-<div style={{ textAlign: "center", marginTop: "20px" }}>
-  <h2>Mejora en los golpes</h2>
-  <p>
-    Basándonos en los datos del jugador, podemos observar las siguientes áreas para mejorar:
-  </p>
-  <ul style={{ listStyleType: "none", padding: 0 }}>
-    <li><strong>Optimización de la estrategia:</strong> Practicar una estrategia más conservadora en hoyos largos como el hoyo 5 y 14 podría reducir la cantidad de golpes.</li>
-  </ul>
+          <div style={{ textAlign: "center", marginTop: "20px" }}>
+            <h2>Mejora en los golpes</h2>
+            <p>
+              Basándonos en los datos del jugador, podemos observar las siguientes áreas para mejorar:
+            </p>
+            <ul style={{ listStyleType: "none", padding: 0 }}>
+            <li><strong>Optimización de la estrategia:</strong> Practicar una estrategia más conservadora en hoyos largos como el hoyo 5 y 14 podría reducir la cantidad de golpes.</li>
+            </ul>
 
-  <h2>Palo más recomendado</h2>
-  <ul style={{ listStyleType: "none", padding: 0 }}>
-    <li><strong>Explorar otros palos:</strong> Prueba diferentes combinaciones para situaciones en las que el palo más usado que se encuentra en la primera tabla no sea el más adecuado.</li>
-  </ul>
+            <h2>Palo más recomendado</h2>
+            <ul style={{ listStyleType: "none", padding: 0 }}>
+            <li><strong>Explorar otros palos:</strong> Prueba diferentes combinaciones para situaciones en las que el palo más usado que se encuentra en la primera tabla no sea el más adecuado.</li>
+            </ul>
 
-  <h2>Ajustes según el clima</h2>
-  <p>
-    Según las condiciones del clima, es recomendable:
-  </p>
-  <ul style={{ listStyleType: "none", padding: 0 }}>
-    <li><strong>Clima cálido:</strong> Mantén un ritmo constante y controla la hidratación. Intenta mantener un golpe suave para evitar el agotamiento.</li>
-    <li><strong>Clima frío:</strong> Considera utilizar un palo de más flexibilidad para obtener mayor control y precisión en el golpe.</li>
-  </ul>
-</div>
+            <h2>Ajustes según el clima</h2>
+            <p>
+              Según las condiciones del clima, es recomendable:
+             </p>
+            <ul style={{ listStyleType: "none", padding: 0 }}>
+            <li><strong>Clima cálido:</strong> Mantén un ritmo constante y controla la hidratación. Intenta mantener un golpe suave para evitar el agotamiento.</li>
+            <li><strong>Clima frío:</strong> Considera utilizar un palo de más flexibilidad para obtener mayor control y precisión en el golpe.</li>
+            </ul>
+          </div>
 
         </div>
       )}
