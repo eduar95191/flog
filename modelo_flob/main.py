@@ -121,22 +121,32 @@ def get_resumen():
 
 @app.route('/ranking', methods=['GET'])
 def get_ranking():
-    
     hoyos = request.args.get('hoyos', default='18', type=str)  
 
+   
     if hoyos == "9":
-        
         ranking_9 = file_golf[file_golf['N_Hoyo'] <= 9]
+        
+        ranking_9 = ranking_9[
+            (ranking_9['Porcentaje_mejora_golpes'] >= 1) & 
+            (ranking_9['Porcentaje_mejora_golpes'] <= 12)
+        ]
         ranking_9 = ranking_9[['ID_Jugador', 'Golpes_predichos', 'Golpes_Total_Hoyo', 'Porcentaje_mejora_golpes', 'Porcentaje_mejora_par']]
         ranking_9 = ranking_9.sort_values(by='Porcentaje_mejora_golpes', ascending=False)
-        ranking_9_top = ranking_9.head(10) 
+        ranking_9_top = ranking_9.head(10)  
     else:
         ranking_9_top = pd.DataFrame()  
 
+    
     ranking_18 = file_golf[file_golf['N_Hoyo'] == 18]
+   
+    ranking_18 = ranking_18[
+        (ranking_18['Porcentaje_mejora_golpes'] >= 1) & 
+        (ranking_18['Porcentaje_mejora_golpes'] <= 12)
+    ]
     ranking_18 = ranking_18[['ID_Jugador', 'Golpes_predichos', 'Golpes_Total_Hoyo', 'Porcentaje_mejora_golpes', 'Porcentaje_mejora_par']]
     ranking_18 = ranking_18.sort_values(by='Porcentaje_mejora_golpes', ascending=False)
-    ranking_18_top = ranking_18.head(10)  
+    ranking_18_top = ranking_18.head(10) 
 
     
     response = {
@@ -145,6 +155,7 @@ def get_ranking():
     }
 
     return jsonify(response)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
