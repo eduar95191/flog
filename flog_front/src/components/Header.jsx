@@ -22,7 +22,6 @@ export const Header = () => {
   const [draweropen, setDraweropen] = useState(false);
   const classes = useStyles();
 
-  // Detecta si el dispositivo es una tableta o escritorio segun el tamaño
   useEffect(() => {
     const responsiveness = () =>
       window.innerWidth < 900 ? setTablet(true) : setTablet(false);

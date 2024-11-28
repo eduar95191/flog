@@ -15,7 +15,7 @@ export const Recomendaciones = () => {
       };
     }
 
-    // Agregar los valores reales de los datos recibidos
+  
     datos.forEach((fila) => {
       const hoyo = fila.N_Hoyo;
       if (hoyo && hoyosCompletos[hoyo]) {
@@ -23,7 +23,7 @@ export const Recomendaciones = () => {
       }
     });
 
-    // Convertir a un array para facilitar el renderizado
+  
     return Object.values(hoyosCompletos);
   };
 
@@ -33,7 +33,7 @@ export const Recomendaciones = () => {
       return;
     }
 
-    // Reiniciar estados
+  
     setDatos(null);
     setError(null);
 
@@ -48,15 +48,15 @@ export const Recomendaciones = () => {
 
       const result = await response.json();
 
-      // Verificar si el resultado está vacío
+      
       if (!Array.isArray(result) || result.length === 0) {
         setError("No se encontraron resultados para este jugador.");
         return;
       }
 
-      // Procesar los datos para asegurar los 18 hoyos
+      
       const datosProcesados = procesarDatos(result);
-      setDatos({ generales: result, hoyos: datosProcesados }); // Dividir en datos generales y hoyos
+      setDatos({ generales: result, hoyos: datosProcesados }); 
     } catch (err) {
       setError("Ocurrió un error al consultar los datos.");
       console.error(err);

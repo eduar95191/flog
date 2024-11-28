@@ -1,31 +1,28 @@
 import { useState, useEffect } from "react";
 
 export const Ranking = () => {
-  const [ranking9, setRanking9] = useState([]); // Estado para el ranking de los 9 hoyos
-  const [ranking18, setRanking18] = useState([]); // Estado para el ranking de los 18 hoyos
+  const [ranking9, setRanking9] = useState([]);
+  const [ranking18, setRanking18] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedHoles, setSelectedHoles] = useState("9"); // Estado para controlar la selección de hoyos (9 o 18)
+  const [selectedHoles, setSelectedHoles] = useState("9");
 
-  // Obtener el ranking desde el servidor Flask
   useEffect(() => {
     fetchRanking();
   }, [selectedHoles]);
 
-  // Función para hacer la solicitud y obtener el ranking
   const fetchRanking = () => {
     fetch(`http://localhost:5000/ranking?hoyos=${selectedHoles}`)
       .then((response) => {
-        // Verificar que la respuesta sea correcta
         if (!response.ok) {
           throw new Error("Error al obtener los datos");
         }
         return response.json();
       })
       .then((data) => {
-        console.log("Datos recibidos:", data); // Verificar que los datos se reciban correctamente
-        setRanking9(data.ranking_9); // Guardar ranking de 9 hoyos
-        setRanking18(data.ranking_18); // Guardar ranking de 18 hoyos
+        console.log("Datos recibidos:", data);
+        setRanking9(data.ranking_9);
+        setRanking18(data.ranking_18);
         setLoading(false);
       })
       .catch((err) => {
@@ -34,10 +31,8 @@ export const Ranking = () => {
       });
   };
 
-  // Filtrar el ranking dependiendo de los hoyos seleccionados
   const displayedRanking = selectedHoles === "9" ? ranking9 : ranking18;
 
-  // Si estamos cargando los datos o hay un error, mostramos un mensaje
   if (loading) {
     return <div style={styles.loadingMessage}>Cargando ranking...</div>;
   }
@@ -46,7 +41,6 @@ export const Ranking = () => {
     return <div style={styles.errorMessage}>{error}</div>;
   }
 
-  // Manejar la selección del número de hoyos
   const handleHoleSelection = (holes) => {
     setSelectedHoles(holes);
   };
