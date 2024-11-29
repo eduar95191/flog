@@ -122,4 +122,3 @@ INSERT INTO jugador (id_jugador, nombre, edad, estatura,correo,contrasena) VALUE
                                                                        ('4', 'Laura Rodríguez', 27, 1.72, 'laurar@gmail.com','123'),
                                                                        ('5', 'Luis Ramírez', 34, 1.78, 'luisr@gmail.com','123');
 
-##DELETE FROM Jugador WHERE id_jugador = '1007356589';
